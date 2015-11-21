@@ -5,13 +5,15 @@ var
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   port = process.env.PORT || 3000,
-  database = 'mongodb://localhost:3000/bundlr-db'
-  //database = 'mongodb://tester:tester@ds041613.mongolab.com:41613/bundlr-db'
+  databaseLocal = 'mongodb://localhost:3000/bundlr-db'
+  database = 'mongodb://tester:tester@ds041613.mongolab.com:41613/bundlr-db'
 
   app = express();
 
 //establishes connection to MongoDB
-mongoose.connect(database);
+mongoose.connect(databaseLocal, function(){
+  console.log('Successfully connected to database: ' + databaseLocal);
+});
 
 //middleware
 app.use(logger('dev'));
