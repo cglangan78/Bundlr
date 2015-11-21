@@ -21,6 +21,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// app.use(express.static('public'));
+
 app.use('/user', userRoutes);
 
 //start the server
