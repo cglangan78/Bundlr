@@ -8,7 +8,7 @@ userRoutes.route('/')
   .post(usersController.createUser)
 
 userRoutes.route('/:_id')
-  .delete(itemsController.destroy)
-  .put(itemsController.update)
+  .delete(itemsController.destroyUser)
+  .put(itemsController.updateUser)
 
 module.exports = userRoutes
