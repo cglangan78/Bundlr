@@ -5,7 +5,7 @@ var
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   port = process.env.PORT || 3000,
-  databaseLocal = 'mongodb://localhost:3000/bundlr-db',
+  databaseLocal = 'mongodb://localhost/bundlr-db',
   database = 'mongodb://tester:tester@ds041613.mongolab.com:41613/bundlr-db',
   userRoutes  = require('./routes/user_routes.js'),
   User = require('./models/user.js'),
@@ -19,7 +19,7 @@ mongoose.connect(databaseLocal, function(){
 //middleware
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/user', userRoutes);
 
