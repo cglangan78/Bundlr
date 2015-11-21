@@ -7,7 +7,8 @@ var
   port = process.env.PORT || 3000,
   databaseLocal = 'mongodb://localhost:3000/bundlr-db',
   database = 'mongodb://tester:tester@ds041613.mongolab.com:41613/bundlr-db',
-  itemRoutes  = require('./routes/user_routes.js'),
+  userRoutes  = require('./routes/user_routes.js'),
+  User = require('./models/user.js'),
   app = express();
 
 //establishes connection to MongoDB
