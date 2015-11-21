@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/cglangan78/Bundlr/issues"
   },
-  "homepage": "https://github.com/cglangan78/Bundlr#readme"
+  "homepage": "https://github.com/cglangan78/Bundlr#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.7",
+    "morgan": "^1.6.1"
+  }
 }
