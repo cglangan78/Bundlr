@@ -8,14 +8,15 @@ var userSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    password: String
+    password: String,
+    created_at: Date
   }
-})
+});
 
 userSchema.pre('save', function(next){
-  if(!this.created_at){
+  if(!this.local.created_at){
     var currentDate = new Date();
-    this.created_at = currentDate;
+    this.local.created_at = currentDate;
   }
   next();
 });
