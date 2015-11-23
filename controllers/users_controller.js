@@ -10,7 +10,6 @@ function index(req, res){
 
 //method to create an user
 function create(req, res){
-  console.log('Creating an user', req.body);
   var user = new User(req.body.user);
   user.local.save(function(err){
     if(err) console.error(err);
