@@ -8,7 +8,7 @@ var
 youtubeRoutes.get('/popular', function(req,res){
   // var q = $('#query').val('cat');
   var key = 'AIzaSyCb8JsJ1jSYDDz9PihwYVgTJyiTTYaNpAw'
-  var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&order=relevance&q=obama&key=" + key;
+  var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q=obama&key=" + key;
 
   request(requestUrl, function(error, response, body) {
     var bodyArr = JSON.parse(body).items;
@@ -16,14 +16,14 @@ youtubeRoutes.get('/popular', function(req,res){
       var videoId = bodyArr[i].id.videoId;
       var url = 'https://www.youtube.com/watch?v=' + videoId
         console.log(url)
-      var popularYoutubeURL = youtube({
-		       youtube_url: url
-	    })
-        popularYoutubeURL.save(function(err){
-   			if(err) throw err;
-      })
+      // var popularYoutubeURL = youtube({
+		  //      youtube_url: url
+	    // })
+      //   popularYoutubeURL.save(function(err){
+   	// 		if(err) throw err;
+      // })
     }
-    res.json(popularYoutubeURL)
+    res.json(bodyArr)
   })
 })
 

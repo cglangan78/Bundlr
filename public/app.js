@@ -1,20 +1,23 @@
 $(document).ready(function(){
-  var results = $('.results');
-  console.log(results)
+  var submitbtn = $('#submit-btn')
+  var searchForm = $('#search-form')
+  console.log(submitbtn)
 
-
-$(results).on('click', function(){
-  $.ajax({
-    url: '/youtube/popular',
-    method: 'GET',
-    contentType: 'application/json',
-    success: function(data){
-      console.log(data)
-      data.forEach(function(url){
-        var li = '<li>' + url.youtube_url + url._id + '</li>'
-        $('.results').append(li);
-      });
-    }
-   })
+  searchForm.on('submit', function(evt){
+    evt.preventDefault()
+    console.log('clicked')
+    $.ajax({
+      url: '/youtube/popular',
+      method: 'GET',
+      contentType: 'application/json',
+      success: function(data){
+        console.log(data)
+        var url = 'https://www.youtube.com/watch?v='
+        data.forEach(function(video){
+          var li = '<li>' + url + video.id.videoId + '</li>'
+          $('.results').append(li)
+        });
+      }
+     })
+    })
   })
-})
