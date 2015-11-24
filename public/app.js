@@ -2,10 +2,12 @@ $(document).ready(function(){
   var $searchForm = $('#search-form');
   var $ytResults = $('#youtube-results');
   var $redditResults = $('#reddit-results');
+  var $twitterResults = $('#twitter-results');
 
   function clearResults(){
       $ytResults.html('');
       $redditResults.html('');
+      $twitterResults.html('');
   }
 
   $searchForm.on('submit', function(evt){
@@ -22,7 +24,7 @@ $(document).ready(function(){
       url: youtubeRequestUrl,
       contentType: 'application/json',
       success: function(data){
-        console.log(data);
+        // console.log(data);
         var url = 'https://www.youtube.com/watch?v='
         data.items.forEach(function(video){
           var fullUrl =  url + video.id.videoId;
@@ -33,14 +35,13 @@ $(document).ready(function(){
       }
      })
     //reddit specific
-    // var redditRequestUrl = 'http://www.reddit.com/r/' + $q + '.json'
     var redditRequestUrl = 'http://www.reddit.com/search.json?q=' + $q + '&limit=10&sort=hot';
-    console.log(redditRequestUrl);
+    // console.log(redditRequestUrl);
     $.ajax({
       method: 'GET',
       url: redditRequestUrl,
       success: function(data){
-        console.log(data);
+        // console.log(data);
         data.data.children.forEach(function(post){
           var redditUrl = post.data.url;
           var li = '<li><a href="' + redditUrl + '" target="_blank">' + redditUrl + '</a></li>';
@@ -48,7 +49,18 @@ $(document).ready(function(){
         });
       }
      })
-
+     //twitter specific
+     $.ajax({
+       method: 'GET',
+       url: '/twitter/searchTwitter/' + $q,
+       success: function(data){
+         console.log(data);
+         data.forEach(function(tweet){
+           var twitterText = tweet.text;
+           var li = '<li>' + twitterText + '</li>';
+           $twitterResults.append(li);
+         });
+       }
+      })
     })
-
   })
