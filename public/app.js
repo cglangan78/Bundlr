@@ -33,7 +33,6 @@ $(document).ready(function(){
       }
      })
     //reddit specific
-    // var redditRequestUrl = 'http://www.reddit.com/r/' + $q + '.json'
     var redditRequestUrl = 'http://www.reddit.com/search.json?q=' + $q + '&limit=10&sort=hot';
     console.log(redditRequestUrl);
     $.ajax({

@@ -11,12 +11,26 @@ var
   userRoutes  = require('./routes/user_routes.js'),
   User = require('./models/user.js'),
   youtube = require('./models/youtube.js'),
+  Twit = require('twit'),
   app = express();
 
 //establishes connection to MongoDB
 mongoose.connect(databaseLocal, function(){
   console.log('Successfully connected to database: ' + databaseLocal);
 });
+
+console.log(process.env.TWITTER_CONSUMER_KEY);
+
+
+var twitter = new Twit({
+ consumer_key: process.env.TWITTER_CONSUMER_KEY,
+ consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+ access_token: process.env.TWITTER_ACCESS_TOKEN,
+ access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
+
+console.log(twitter);
+
 
 //middleware
 app.use(logger('dev'));
@@ -27,12 +41,6 @@ app.use(express.static('public'));
 
 app.use('/user', userRoutes);
 // app.use('/youtube', youtubeRoutes);
-
-// app.get('/', function(req, res){
-//     youtube.find({}, function(err){
-//         res.render('index');
-//     });
-// });
 
 
 //start the server
