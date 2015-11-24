@@ -13,7 +13,6 @@ var
   User = require('./models/user.js'),
   // youtube = require('./models/youtube.js'),
   Twit = require('twit'),
-  cors = require('cors'),
   app = express();
 
 //establishes connection to MongoDB
@@ -27,9 +26,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
-
-//cors middleware
-app.use(cors());
 
 app.use('/user', userRoutes);
 app.use('/twitter', twitterRoutes);
