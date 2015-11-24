@@ -1,15 +1,16 @@
 var
   express = require('express'),
   Twit = require('twit'),
+  twitterKeys = require('../config/twitter-keys.js'),
   twitterRoutes = express.Router();
 
 
 //twitter enviormental variables
 var twitter = new Twit({
- consumer_key: process.env.TWITTER_CONSUMER_KEY,
- consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
- access_token: process.env.TWITTER_ACCESS_TOKEN,
- access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+ consumer_key: twitterKeys.consumer_key,
+ consumer_secret: twitterKeys.consumer_secret,
+ access_token: twitterKeys.access_token,
+ access_token_secret: twitterKeys.access_token_secret
 });
 
 console.log(twitter);
