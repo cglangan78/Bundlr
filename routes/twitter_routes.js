@@ -16,7 +16,7 @@ var twitter = new Twit({
 
 
 twitterRoutes.get('/searchTwitter/:term', function(request, response){
-  twitter.get('search/tweets', { q: request.params.term, count: 10 }, function(err, data, res) {
+  twitter.get('search/tweets', { q: request.params.term, count: 10, result_type: 'recent' }, function(err, data, res) {
     response.json(data.statuses);
     var userSearch = Search({
    		       user_search: request.params.term
