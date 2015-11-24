@@ -7,7 +7,7 @@ var
   port = process.env.PORT || 3000,
   databaseLocal = 'mongodb://localhost/bundlr-db',
   database = 'mongodb://tester:tester@ds041613.mongolab.com:41613/bundlr-db',
-  youtubeRoutes = require('./routes/youtube_routes.js'),
+  // youtubeRoutes = require('./routes/youtube_routes.js'),
   userRoutes  = require('./routes/user_routes.js'),
   User = require('./models/user.js'),
   youtube = require('./models/youtube.js'),
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 app.use('/user', userRoutes);
-app.use('/youtube', youtubeRoutes);
+// app.use('/youtube', youtubeRoutes);
 
 // app.get('/', function(req, res){
 //     youtube.find({}, function(err){
