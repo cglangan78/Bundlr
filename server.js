@@ -11,7 +11,7 @@ var
   twitterRoutes = require('./routes/twitter_routes.js'),
   userRoutes  = require('./routes/user_routes.js'),
   User = require('./models/user.js'),
-  // youtube = require('./models/youtube.js'),
+  Search = require('./models/search.js'),
   Twit = require('twit'),
   app = express();
 
@@ -25,6 +25,7 @@ mongoose.connect(databaseLocal, function(){
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(express.static('public'));
 
 app.use('/user', userRoutes);
