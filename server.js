@@ -8,10 +8,12 @@ var
   databaseLocal = 'mongodb://localhost/bundlr-db',
   database = 'mongodb://tester:tester@ds041613.mongolab.com:41613/bundlr-db',
   // youtubeRoutes = require('./routes/youtube_routes.js'),
+  twitterRoutes = require('./routes/twitter_routes.js'),
   userRoutes  = require('./routes/user_routes.js'),
   User = require('./models/user.js'),
-  youtube = require('./models/youtube.js'),
+  // youtube = require('./models/youtube.js'),
   Twit = require('twit'),
+  cors = require('cors'),
   app = express();
 
 //establishes connection to MongoDB
@@ -19,28 +21,18 @@ mongoose.connect(databaseLocal, function(){
   console.log('Successfully connected to database: ' + databaseLocal);
 });
 
-console.log(process.env.TWITTER_CONSUMER_KEY);
-
-
-var twitter = new Twit({
- consumer_key: process.env.TWITTER_CONSUMER_KEY,
- consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
- access_token: process.env.TWITTER_ACCESS_TOKEN,
- access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-});
-
-console.log(twitter);
-
 
 //middleware
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(express.static('public'));
 
+//cors middleware
+app.use(cors());
+
 app.use('/user', userRoutes);
-// app.use('/youtube', youtubeRoutes);
+app.use('/twitter', twitterRoutes);
 
 
 //start the server
