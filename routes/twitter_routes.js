@@ -1,9 +1,10 @@
 var
   express = require('express'),
-  Twit = require('twit'),
+  request = require('request'),
   twitterKeys = require('../config/twitter-keys.js'),
+  Twit = require('twit'),
+  Search = require('../models/search.js'),
   twitterRoutes = express.Router();
-
 
 //twitter enviormental variables
 var twitter = new Twit({
@@ -13,15 +14,18 @@ var twitter = new Twit({
  access_token_secret: twitterKeys.access_token_secret
 });
 
-console.log(twitter);
-
 
 twitterRoutes.get('/searchTwitter/:term', function(request, response){
-  console.log('the query term is: ', request.params.term)
   twitter.get('search/tweets', { q: request.params.term, count: 10 }, function(err, data, res) {
-    console.log(data);
     response.json(data.statuses);
+    var userSearch = Search({
+   		       user_search: request.params.term
+   	    })
+      console.log(userSearch);
+      userSearch.save(function(err){
+      	if(err) throw err
+    })
   })
-})
+});
 
 module.exports = twitterRoutes;
