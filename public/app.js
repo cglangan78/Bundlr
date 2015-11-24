@@ -1,29 +1,54 @@
 $(document).ready(function(){
   var $searchForm = $('#search-form');
-  var $results = $('.results');
+  var $ytResults = $('#youtube-results');
+  var $redditResults = $('#reddit-results');
 
   function clearResults(){
-      $results.html('');
+      $ytResults.html('');
+      $redditResults.html('');
   }
 
   $searchForm.on('submit', function(evt){
     evt.preventDefault();
-    var $q = $('#search').val();
-    var key = 'AIzaSyCb8JsJ1jSYDDz9PihwYVgTJyiTTYaNpAw';
-    var requestUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q=' + $q + '&key=' + key;
+    //clear previous search results
     clearResults();
+    //grabbing input value
+    var $q = $('#search').val();
+    //youtube specific
+    var youtubeKey = 'AIzaSyCb8JsJ1jSYDDz9PihwYVgTJyiTTYaNpAw';
+    var youtubeRequestUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q=' + $q + '&key=' + youtubeKey;
     $.ajax({
       method: 'GET',
-      url: requestUrl,
+      url: youtubeRequestUrl,
       contentType: 'application/json',
       success: function(data){
-        console.log(data)
+        console.log(data);
         var url = 'https://www.youtube.com/watch?v='
         data.items.forEach(function(video){
-          var li = '<li>' + url + video.id.videoId + '</li>'
-          $results.append(li)
+          var fullUrl =  url + video.id.videoId;
+          var thumbnail = '<img src="' + video.snippet.thumbnails.medium.url + ' ">';
+          var li = '<li><a href="' + fullUrl + '" target="_blank">' + thumbnail + '</a></li>';
+          $ytResults.append(li);
         });
       }
      })
+    //reddit specific
+    // var redditRequestUrl = 'http://www.reddit.com/r/' + $q + '.json'
+    var redditRequestUrl = 'http://www.reddit.com/search.json?q=' + $q + '&limit=10&sort=hot';
+    console.log(redditRequestUrl);
+    $.ajax({
+      method: 'GET',
+      url: redditRequestUrl,
+      success: function(data){
+        console.log(data);
+        data.data.children.forEach(function(post){
+          var redditUrl = post.data.url;
+          var li = '<li><a href="' + redditUrl + '" target="_blank">' + redditUrl + '</a></li>';
+          $redditResults.append(li);
+        });
+      }
+     })
+
     })
+
   })
