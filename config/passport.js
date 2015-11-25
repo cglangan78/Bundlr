@@ -1,8 +1,9 @@
 var
-    passport        = require('passport'),
-    LocalStrategy   = require('passport-local').Strategy;
-
-var User = require('../models/user.js');
+  passport = require('passport'),
+  LocalStrategy = require('passport-local').Strategy,
+  FacebookStrategy = require('passport-facebook').Strategy,
+  configAuth = require('./auth.js'),
+  User = require('../models/user.js');
 
 
 passport.serializeUser(function(user, done){
@@ -27,8 +28,8 @@ passport.use('local-signup', new LocalStrategy({
         var newUser = new User()
         newUser.local.firstName = req.body.firstName
         newUser.local.lastName = req.body.lastName
-        newUser.local.email = email
-        newUser.local.password = newUser.generateHash(password)
+        newUser.local.email = req.body.email
+        newUser.local.password = req.body.password
 
         newUser.save(function(err){
             if(err) throw err
@@ -38,12 +39,10 @@ passport.use('local-signup', new LocalStrategy({
 }))
 
 passport.use('local-login', new LocalStrategy({
-    firstnameField: 'firstName',
-    lastnameField: 'lastName',
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-}, function(req, firstName, lastName, email, password, done){
+}, function(req, email, password, done){
   User.findOne({'local.email': email}, function(err, user){
       if(err) throw err
       if(!user) return done(null, false, req.flash('loginMessage', 'No user found'))
@@ -51,5 +50,31 @@ passport.use('local-login', new LocalStrategy({
       return done(null, user)
   })
 }))
+
+passport.use(new FacebookStrategy({
+    clientID: configAuth.facebookAuth.clientID,
+    clientSecret: configAuth.facebookAuth.clientSecret,
+    callbackURL: configAuth.facebookAuth.callbackURL,
+    profileFields: configAuth.facebookAuth.profileFields
+},  function(token, refreshToken, profile, done){
+    User.findOne({'facebook.id': profile.id}, function(err, user){
+        if(err) return done(err)
+        if(user){
+            return done(null, user)
+        } else {
+          var newUser = new User()
+          newUser.facebook.id = profile.id
+          newUser.facebook.token = token
+          newUser.facebook.name = profile.displayName
+          newUser.facebook.email = profile.emails[0].value
+
+          newUser.save(function(err){
+              if(err) throw err
+              return done(null, newUser)
+          })
+        }
+    })
+}))
+
 
 module.exports = passport;

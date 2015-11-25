@@ -6,7 +6,7 @@ var
 
 userRoutes.route('/user')
   .get(usersController.showUser)
-  .post(usersController.createUser)
+  // .post(usersController.createUser)
 
 userRoutes.route('/user/:_id')
   .delete(usersController.destroyUser)
@@ -40,6 +40,10 @@ userRoutes.route('/signup')
 userRoutes.get('/profile', isLoggedIn, function(req,res){
         res.render('profile', {user: req.user})
 })
+// userRoutes.route('/profile')
+// .get(function(req,res){
+//   res.render('profile', {message: req.flash('signupMessage')})
+// })
 
 //facebook routes
 userRoutes.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}))

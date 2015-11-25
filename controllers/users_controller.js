@@ -9,23 +9,21 @@ function index(req, res){
 }
 
 //method to create an user
-function create(req, res){
-  console.log(req.body);
-  var user = new User({
-    local: {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: req.body.password
-    }
-  });
-  console.log(req.body);
-  user.save(function(err){
-    if(err) console.error(err);
-    console.log("saving user", user)
-    res.json({success: true, message: 'User was created', _id: user.id});
-  })
-}
+// function create(req, res){
+//   console.log(req.body);
+//   var user = new User()
+//     user.local.firstName = req.body.firstName;
+//     user.local.lastName = req.body.lastName;
+//     user.local.email = req.body.email;
+//     user.local.password = user.generateHash(req.body.password);
+//
+//   console.log(req.body);
+//   user.save(function(err){
+//     if(err) console.error(err);
+//     console.log("saving user", user)
+//     res.json({success: true, message: 'User was created', _id: user.id});
+//   })
+// }
 
 //method to destroy an user
 function destroy(req, res){
@@ -46,7 +44,7 @@ function update(req, res){
 
 module.exports = {
   showUser: index,
-  createUser: create,
+  // createUser: create,
   destroyUser: destroy,
   updateUser: update
 }

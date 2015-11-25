@@ -2,7 +2,7 @@
 var
   mongoose = require('mongoose'),
   bcrypt = require('bcrypt-nodejs'),
-  Schema   = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 var userSchema = new Schema({
   local: {
@@ -25,6 +25,7 @@ userSchema.pre('save', function(next){
     var currentDate = new Date();
     this.local.created_at = currentDate;
   }
+  this.local.password = this.generateHash(this.local.password)
   next();
 });
 
