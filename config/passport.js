@@ -54,7 +54,7 @@ passport.use('local-login', new LocalStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    callbackURL: configAuth.facebookAuth.callbackURL,
     profileFields: configAuth.facebookAuth.profileFields
 },  function(token, refreshToken, profile, done){
     User.findOne({'facebook.id': profile.id}, function(err, user){
