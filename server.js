@@ -59,4 +59,5 @@ app.get('/', function(req, res){
 //start the server
 app.listen(port, function(){
   console.log('The server is listening on port: ' + port)
+  console.log(configAuth.facebookAuth.clientID);
 });
