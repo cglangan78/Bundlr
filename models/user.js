@@ -1,6 +1,7 @@
 //user model
 var
   mongoose = require('mongoose'),
+  bcrypt = require('bcrypt-nodejs'),
   Schema   = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -10,6 +11,12 @@ var userSchema = new Schema({
     email: String,
     password: String,
     created_at: Date
+  },
+  facebook: {
+    id: String,
+    name: String,
+    token: String,
+    email: String
   }
 });
 
@@ -21,6 +28,13 @@ userSchema.pre('save', function(next){
   next();
 });
 
+userSchema.methods.generateHash = function(password) {
+return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+};
+
+userSchema.methods.validPassword = function(password) {
+return bcrypt.compareSync(password, this.local.password)
+};
 
 var User = mongoose.model('User', userSchema);
 

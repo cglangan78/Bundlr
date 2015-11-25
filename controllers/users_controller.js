@@ -10,14 +10,22 @@ function index(req, res){
 
 //method to create an user
 function create(req, res){
-  var user = new User(req.body.user);
-  user.local.save(function(err){
+  console.log(req.body);
+  var user = new User({
+    local: {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password
+    }
+  });
+  console.log(req.body);
+  user.save(function(err){
     if(err) console.error(err);
     console.log("saving user", user)
     res.json({success: true, message: 'User was created', _id: user.id});
   })
 }
-
 
 //method to destroy an user
 function destroy(req, res){
