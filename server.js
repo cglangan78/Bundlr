@@ -7,8 +7,12 @@ var
   port = process.env.PORT || 3000,
   databaseLocal = 'mongodb://localhost/bundlr-db',
   database = 'mongodb://tester:tester@ds041613.mongolab.com:41613/bundlr-db',
+  // youtubeRoutes = require('./routes/youtube_routes.js'),
+  twitterRoutes = require('./routes/twitter_routes.js'),
   userRoutes  = require('./routes/user_routes.js'),
   User = require('./models/user.js'),
+  // youtube = require('./models/youtube.js'),
+  Twit = require('twit'),
   app = express();
 
 //establishes connection to MongoDB
@@ -16,14 +20,16 @@ mongoose.connect(databaseLocal, function(){
   console.log('Successfully connected to database: ' + databaseLocal);
 });
 
+
 //middleware
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 app.use('/user', userRoutes);
+app.use('/twitter', twitterRoutes);
+
 
 //start the server
 app.listen(port, function(){
