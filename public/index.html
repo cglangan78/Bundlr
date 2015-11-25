@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oleo+Script">
+    <link rel="stylesheet" href="style.css">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -15,29 +18,106 @@
     <![endif]-->
   </head>
   <body>
-    <section class="container">
-
-      <header> <h1> Search </h1> </header>
-      <div class="main">
-
-
-      <form class="form" id="search-form" method="get">
-          <div class="form-container">
-            <input id="search" type="text" placeholder="Enter Search">
+    <header>
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand brand" href="#">Bundlr</a>
           </div>
-          <button type="submit" id="submit-btn" class="btn">Click to search</button>
-      </form>
 
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a id="sign-up" href="#">Sign Up</a></li>
+              <li><a href="#">Log In</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+    <section id="mast-head">
+      <div class="jumbotron">
+        <div class="container">
+          <h2>Lorem ipsum dolor sit amet!</h2>
+          <form class="form" id="search-form" method="get">
+            <div class="ui action input fluid">
+              <input id="search" type="text" placeholder="Enter you search here ...">
+              <button class="ui teal right labeled icon button">
+                <i class="search icon"></i>
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="results" class="container">
       <ul id="youtube-results" class="results list-unstyled"></ul>
       <ul id="reddit-results" class="results list-unstyled"></ul>
       <ul id="twitter-results" class="results list-unstyled"></ul>
-
-      </div>
-
     </section>
+    <footer>
+      <small>Bundlr | Copyright &copy; 2015 | RGK</small>
+    </footer>
 
+    <!-- Sign up modal -->
+    <div class="ui modal signup">
+      <i class="close icon"></i>
+      <div class="header">
+        Sign Up!
+      </div>
+      <div class="content">
+        <div class="description">
+          <div class="ui header">Sign up for exclusive content (maybe).</div>
+          <form class="ui form">
+            <div class="field six wide">
+            <label>First Name</label>
+            <input type="text" name="first-name" placeholder="First Name">
+          </div>
+          <div class="field six wide">
+            <label>Last Name</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="actions">
+            <div class="ui black deny button">
+              Cancel
+            </div>
+            <div class="ui positive right labeled icon button">
+              Sign Up
+              <i class="checkmark icon"></i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  <!-- Required JavaScript files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src='app.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+      $('#sign-up').on('click', function(evt) {
+        evt.preventDefault();
+        $('.ui.modal.signup').modal('show');
+      });
+    </script>
   </body>
 </html>
