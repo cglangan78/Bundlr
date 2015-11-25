@@ -1,0 +1,22 @@
+html, body {
+  overflow-y: scroll;
+}
+
+.brand {
+  font-family: 'Oleo Script';
+  font-size: 2.3rem;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+#youtube-results {
+
+}
+
+#youtube-results img {
+  width: 175px;
+  height: auto;
+  padding: 1rem;
+}
