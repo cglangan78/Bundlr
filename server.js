@@ -21,6 +21,7 @@ var
   session = require('express-session'),
   passport = require('passport'),
 	passportConfig = require('./config/passport.js'),
+  configAuth = require('./auth.js'),
   app = express();
 
 //establishes connection to MongoDB
