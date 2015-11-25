@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines":{
+  "engines": {
     "node": "4.1.1"
   },
   "repository": {
@@ -25,6 +25,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.0",
     "cors": "^2.7.1",
+    "dotenv": "^1.2.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-ejs-layouts": "^2.0.0",

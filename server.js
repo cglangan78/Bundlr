@@ -1,6 +1,7 @@
 //call the packages
 var
   express = require('express'),
+  dotenv = require('dotenv').load(),
   logger = require('morgan'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
