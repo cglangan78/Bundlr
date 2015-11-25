@@ -52,8 +52,8 @@ passport.use('local-login', new LocalStrategy({
 }))
 
 passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_CLIENT_ID || configAuth.facebookAuth.clientID,
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET || configAuth.facebookAuth.clientSecret,
+    clientID: configAuth.facebookAuth.clientID,
+    clientSecret: configAuth.facebookAuth.clientSecret,
     callbackURL: configAuth.facebookAuth.callbackURL,
     profileFields: configAuth.facebookAuth.profileFields
 },  function(token, refreshToken, profile, done){
