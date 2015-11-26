@@ -25,8 +25,8 @@ var
   app = express();
 
 //establishes connection to MongoDB
-mongoose.connect(databaseLocal, function(){
-  console.log('Successfully connected to database: ' + databaseLocal);
+mongoose.connect(database, function(){
+  console.log('Successfully connected to database: ' + database);
 });
 
 //middleware
