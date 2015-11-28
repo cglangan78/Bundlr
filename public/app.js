@@ -29,7 +29,7 @@ $(document).ready(function(){
         data.items.forEach(function(video){
           var fullUrl =  url + video.id.videoId;
           var thumbnail = '<img src="' + video.snippet.thumbnails.medium.url + ' ">';
-          var li = '<li><a href="' + fullUrl + '" target="_blank">' + thumbnail + '</a></li>';
+          var li = '<li class="inline-block"><a href="' + fullUrl + '" target="_blank">' + thumbnail + '</a></li>';
           $ytResults.append(li);
         });
       }
@@ -57,7 +57,7 @@ $(document).ready(function(){
          console.log(data);
          data.forEach(function(tweet){
            var twitterText = tweet.text;
-           var li = '<li>' + twitterText + '</li>';
+           var li = '<li class="ui raised segment">' + twitterText + '</li>';
            $twitterResults.append(li);
          });
        }
