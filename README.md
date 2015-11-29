@@ -15,7 +15,7 @@ Bundlr aggregates three social media sites (Reddit, Twitter and YouTube) onto on
 ##User Stories:
 ####Non-Registered User can:
 * enter a word or phrase into the search bar
-* sign-up to be a new user
+* sign-up to be a new user (locally or using Facebook)
 
 ####Registered User can:
 * enter a word or phrase into the search bar
@@ -36,6 +36,7 @@ Bundlr aggregates three social media sites (Reddit, Twitter and YouTube) onto on
 ##Technologies/APIs used:
 * Languages: JavaScript, Jquery, HTML, CSS, Bootstrap
 * APIs: Reddit, Twitter, YouTube
+* Authentication using OAuth
 * AJAX
 * [Trello](https://trello.com/b/61HS80xR/bundlr)
 * GitHub
