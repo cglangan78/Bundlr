@@ -3,11 +3,13 @@ $(document).ready(function(){
   var $ytResults = $('#youtube-results');
   var $redditResults = $('#reddit-results');
   var $twitterResults = $('#twitter-results');
+  var $searchResults = $('#search-results');
 
   function clearResults(){
       $ytResults.html('');
       $redditResults.html('');
       $twitterResults.html('');
+      $searchResults.html('');
   }
 
   $searchForm.on('submit', function(evt){
@@ -54,7 +56,6 @@ $(document).ready(function(){
        method: 'GET',
        url: '/twitter/searchTwitter/' + $q,
        success: function(data){
-         console.log(data);
          data.forEach(function(tweet){
            var twitterText = tweet.text;
            var li = '<li>' + twitterText + '</li>';
@@ -64,8 +65,19 @@ $(document).ready(function(){
       })
     //search specific
     $.ajax({
-      url: '/api'
-      ,method: 'GET'
-      ,success: function(data){
-    })
-  })
+      method: 'GET',
+      url: '/search/api',
+      success: function(data){
+        var dataSpecific = data.splice(-5).reverse()
+        dataSpecific.forEach(function(search){
+          console.log(search.user_search)
+          var searchResults = search.user_search;
+          // var searchAgain = 'https://www.'
+          // var li = '<li><a href="' + searchAgain + '" target="_blank">' + searchResults + '</a></li>';
+          var li = '<li>' + searchResults + '</li>';
+          $searchResults.append(li);
+        })
+      }
+   })
+ })
+})

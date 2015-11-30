@@ -11,6 +11,7 @@ var
   // youtubeRoutes = require('./routes/youtube_routes.js'),
   twitterRoutes = require('./routes/twitter_routes.js'),
   userRoutes  = require('./routes/user_routes.js'),
+  searchRoutes = require('./routes/search_routes.js'),
   User = require('./models/user.js'),
   Search = require('./models/search.js'),
   Twit = require('twit'),
@@ -25,8 +26,8 @@ var
   app = express();
 
 //establishes connection to MongoDB
-mongoose.connect(database, function(){
-  console.log('Successfully connected to database: ' + database);
+mongoose.connect(databaseLocal, function(){
+  console.log('Successfully connected to database: ' + databaseLocal);
 });
 
 //middleware
@@ -51,6 +52,7 @@ app.use(flash());
 
 app.use('/', userRoutes);
 app.use('/twitter', twitterRoutes);
+app.use('/search', searchRoutes);
 
 //root route
 app.get('/', function(req, res){
