@@ -1,6 +1,10 @@
 <footer class="row">
   <div class="col-md-12 text-center text-muted">
-    <small><a href="/">Bundlr</a> | Copyright &copy; <%= new Date().getFullYear() %> | RGK</small>
+    <small><a href="/">Bundlr</a> | Copyright &copy;
+      <% if(new Date().getFullYear() !== 2015) { %>
+        2015 -
+      <% } %>
+      <%= new Date().getFullYear(); %> | RGK | All Rights Reserved.</small>
   </div>
 </footer>
 

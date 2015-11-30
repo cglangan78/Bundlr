@@ -1,10 +1,10 @@
 <section id="mast-head">
   <div class="jumbotron">
     <div class="container">
-      <h2>Lorem ipsum dolor sit amet!</h2>
+      <h2>Search all your favorite feeds in one convenient place.</h2>
       <form class="form" id="search-form" method="get">
         <div class="ui action input fluid">
-          <input id="search" type="text" placeholder="Enter you search here ...">
+          <input id="search" type="text" placeholder="Enter a word or phrase ...">
           <button class="ui teal right labeled icon button">
             <i class="search icon"></i> Search
           </button>
@@ -17,7 +17,7 @@
   <div class="container">
     <div class="col-md-8">
       <ul id="youtube-results" class="results list-unstyled"></ul>
-      <ul id="reddit-results" class="results list-unstyled"></ul>
+      <ul id="reddit-results" class="ui divided items results list-unstyled"></ul>
     </div>
       <aside class="col-md-4">
         <ul id="twitter-results" class="results list-unstyled"></ul>
@@ -25,39 +25,20 @@
   </div>
 </section>
 
-<!-- Sign up modal >
-<div class="ui modal signup">
+<!-- YouTube modal -->
+<div class="ui modal">
   <i class="close icon"></i>
   <div class="header">
-    Sign Up!
+    YouTube
   </div>
   <div class="content">
     <div class="description">
-      <div class="ui header">Sign up for exclusive content (maybe).</div>
-      <form class="ui form">
-        <div class="field six wide">
-          <label>First Name</label>
-          <input type="text" name="first-name" placeholder="First Name">
-        </div>
-        <div class="field six wide">
-          <label>Last Name</label>
-          <input type="text" name="last-name" placeholder="Last Name">
-        </div>
-        <div class="actions">
-          <div class="ui black deny button">
-            Cancel
-          </div>
-          <div class="ui positive right labeled icon button">
-            Sign Up
-            <i class="checkmark icon"></i>
-          </div>
-        </div>
-      </form>
+      <div class="ui header">Video Title</div>
     </div>
-  </div-->
-<!-- <script>
-      $('#sign-up').on('click', function(evt) {
+  </div>
+    <script>
+      $('.yt-video').on('click', function(evt) {
         evt.preventDefault();
-        $('.ui.modal.signup').modal('show');
+        $('.ui.modal').modal('show');
       });
-    </script> -->
+    </script>
