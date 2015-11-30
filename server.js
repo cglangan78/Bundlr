@@ -11,6 +11,7 @@ var
   // youtubeRoutes = require('./routes/youtube_routes.js'),
   twitterRoutes = require('./routes/twitter_routes.js'),
   userRoutes  = require('./routes/user_routes.js'),
+  searchRoutes = require('./routes/search_routes.js'),
   User = require('./models/user.js'),
   Search = require('./models/search.js'),
   Twit = require('twit'),
@@ -51,10 +52,11 @@ app.use(flash());
 
 app.use('/', userRoutes);
 app.use('/twitter', twitterRoutes);
+app.use('/search', searchRoutes);
 
 //root route
 app.get('/', function(req, res){
-  res.render('index');
+  res.render('index', {user: res.user});
 })
 
 //start the server

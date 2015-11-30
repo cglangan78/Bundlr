@@ -12,8 +12,49 @@ html, body {
   margin-bottom: 0;
 }
 
+#hero {
+  text-align: center;
+}
+
+#hero h2 {
+  font-family: 'Patua One';
+  font-size: 2.5rem;
+  color: #00b5ad;
+  text-shadow: 0 1px 1px #222;
+  letter-spacing: 1px;
+}
+
+#hero form {
+  width: 600px;
+}
+
 div.jumbotron {
   margin-bottom: 0;
+  background: url('./images/office-desk.jpg');
+  background-size: cover;
+  min-height: 450px;
+  padding: 140px 0 60px 0;
+}
+
+.login, .signup, .profile {
+  padding-bottom: 50px;
+}
+
+.login {
+  background-color: #fff;
+}
+
+.signup {
+  background-color: #fff;
+}
+
+.profile {
+  background-color: #fff;
+}
+
+#search-results {
+  display: none;
+  padding: 20px 0 0 0;
 }
 
 #results {
@@ -22,14 +63,12 @@ div.jumbotron {
   padding: 40px 0;
 }
 
-#youtube-results {
-
+.results {
+  margin-bottom: 70px;
 }
-
 #youtube-results img {
-  width: 340px;
+  width: 300px;
   height: auto;
-  padding: 1rem;
 }
 
 /* twitter feed user photo */
@@ -68,6 +107,16 @@ div.jumbotron {
   color: #55acee;
 }
 
+li.inline-block.ui.feed.raised.red.segment {
+  margin-right: 15px;
+}
+
+/* override Semantic UI blue segment to match YouTube brand color */
+.ui.red.segment:not(.inverted) {
+  border-top: 1px solid rgba(34,36,38,.15);
+  border-bottom: 2px solid #cd201f;
+}
+
 .youtube {
   color: #cd201f;
 }
@@ -79,5 +128,5 @@ footer {
 
 /* helper class */
 .inline-block {
-  display: inline-block;
+  display: inline-table;
 }

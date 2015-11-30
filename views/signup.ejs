@@ -1,39 +1,41 @@
-<section class="col-sm-6 col-sm-offset-3">
-  <div class="page-header">
-    <h1 class="ui header">Signup</h1>
-  </div>
+<section class="signup row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="page-header">
+      <h1 class="ui header">Signup</h1>
+    </div>
 
-  <!-- show any messages that come back with authentication -->
-  <% if (message.length > 0) { %>
-    <div class="alert alert-danger">
-      <%= message %>
-    </div>
-  <% } %>
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% } %>
 
-  <form action="/signup" method="post" class="ui form">
-    <div class="field">
-      <label>First Name</label>
-      <input type="text" class="form-control" name="firstName">
+    <form action="/signup" method="post" class="ui form">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" class="form-control" name="firstName">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="lastName">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password">
+      </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" name="confirmPassword">
+      </div>
+      <button type="submit" class="ui teal button">Signup</button>
+      <hr>
+      <a href="/auth/facebook">
+        <button class="ui facebook button"><i class="facebook icon"></i>Log in with Facebook</button>
+      </a>
     </div>
-    <div class="field">
-      <label>Last Name</label>
-      <input type="text" class="form-control" name="lastName">
-    </div>
-    <div class="field">
-      <label>Email</label>
-      <input type="text" class="form-control" name="email">
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="password" class="form-control" name="password">
-    </div>
-    <div class="field">
-      <label>Confirm Password</label>
-      <input type="password" class="form-control" name="confirmPassword">
-    </div>
-    <button type="submit" class="ui teal button">Signup</button>
-    <hr>
-    <a href="/auth/facebook">
-      <button class="ui facebook button"><i class="facebook icon"></i>Log in with Facebook</button>
-    </a>
 </section>

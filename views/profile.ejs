@@ -1,25 +1,25 @@
-<section class="container">
-  <div class="page-header">
-    <h2 class="ui header">Hi, <%= user.local.firstName || user.facebook.name %>!</h2>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="well">
+<section class="profile">
+  <div class="container">
+    <div class="page-header">
+      <h2 class="ui header">Account Information</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
         <% if(user.facebook.id) { %>
           <h3>Facebook User</h3>
         <% } else { %>
           <h3>Locally Stored User</h3>
         <% } %>
         <p>
-          <strong>Name</strong>: <%= user.local.firstName + ' ' + user.local.lastName || user.facebook.name %><br>
-          <strong>id</strong>: <%= user._id %><br>
-          <strong>email</strong>: <%= user.local.email || user.facebook.email %><br>
-          <strong>password</strong>: <%= user.local.password || user.facebook.token %>
+          <strong>Name:</strong> <%= user.local.firstName + ' ' + user.local.lastName || user.facebook.name %><br>
+          <strong>User ID:</strong> <%= user._id %><br>
+          <strong>Email:</strong> <%= user.local.email || user.facebook.email %><br>
+          <strong>Password:</strong> <%= user.local.password || user.facebook.token %>
         </p>
       </div>
     </div>
+    <a href="/logout">
+      <button class="ui teal button">Logout</button>
+    </a>
   </div>
-  <a href="/logout">
-    <button class="ui teal button">Logout</button>
-  </a>
 </section>

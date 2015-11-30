@@ -4,11 +4,14 @@ $(document).ready(function(){
   var $ytResults = $('#youtube-results');
   var $redditResults = $('#reddit-results');
   var $twitterResults = $('#twitter-results');
+  var $searchResults = $('#search-results');
 
+  // clear results containers before appending new data
   function clearResults() {
     $ytResults.html('');
     $redditResults.html('');
     $twitterResults.html('');
+    $searchResults.html('');
   }
 
   // helper function to convert UTC to dates
@@ -24,6 +27,7 @@ $(document).ready(function(){
     //clear previous search results
     clearResults();
     $resultsContainer.css('display', 'block');
+    $searchResults.css('display', 'block');
     //grabbing input value
     var $q = $('#search').val();
     //youtube specific
@@ -39,8 +43,12 @@ $(document).ready(function(){
         var url = 'https://www.youtube.com/watch?v='
         data.items.forEach(function(video){
           var fullUrl =  url + video.id.videoId;
-          var thumbnail = '<img class="ui fluid image" src="' + video.snippet.thumbnails.medium.url + ' ">';
-          var li = '<li class="inline-block yt-video"><a href="' + fullUrl + '" target="_blank">' + thumbnail + '</a></li>';
+          var thumbnail = '<img class="ui rounded image" src="' + video.snippet.thumbnails.medium.url + ' ">';
+          var li = '<li class="inline-block ui feed raised red segment">';
+              li += '<div>';
+              li += '<a href="' + fullUrl + '" target="_blank">' + thumbnail + '</a>';
+              li += '</div>';
+              li += '</li>';
           $ytResults.append(li);
         });
       }
@@ -66,16 +74,16 @@ $(document).ready(function(){
               if (thumbnail === 'self' || !thumbnail) { // if thumbnail is a bust, use a reddit icon
                 li += '<i class="disabled huge reddit icon"></i>'
               } else {
-                li += '<img src="' + thumbnail + '">';
+                li += '<img src="' + thumbnail + '" class="img-rounded">';
               };
               li += '</div>';
               li += '<div class="content">';
               li += '<a href="' + redditUrl + '" class="header">' + title + '</a>';
               li += '<div class="meta text-muted">';
-              li +=  '<span>' + created + '</span>';
+              li += '<span>' + created + '</span>';
               li += '</div>';
               li += '<div class="extra text-muted">/r/';
-              li +=  '<a href="http://www.reddit.com/r/' + subreddit + '" target="_blank">' + subreddit + '</a>';
+              li += '<a href="http://www.reddit.com/r/' + subreddit + '" target="_blank">' + subreddit + '</a>';
               li += '</div>';
               li += '</div>';
               li += '</li>';
@@ -107,6 +115,21 @@ $(document).ready(function(){
            $twitterResults.append(li);
          });
        }
+      })
+      //search specific
+    $.ajax({
+      method: 'GET',
+      url: '/search/api',
+      success: function(data){
+        var dataSpecific = data.splice(-5).reverse();
+        $searchResults.html('<h5>Most recent searches: </h5>');
+        dataSpecific.forEach(function(search){
+          console.log(search.user_search)
+          var searchResults = search.user_search;
+          var li = '<li class="inline-block">' + searchResults + ' / </li>';
+          $searchResults.append(li);
+          })
+        }
       })
     })
   })

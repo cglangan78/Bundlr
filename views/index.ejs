@@ -1,8 +1,8 @@
-<section id="mast-head">
+<section id="hero">
   <div class="jumbotron">
     <div class="container">
-      <h2>Search all your favorite feeds in one convenient place.</h2>
-      <form class="form" id="search-form" method="get">
+      <h2>Search your favorite feeds in one convenient place.</h2>
+      <form class="form center-block" id="search-form" method="get">
         <div class="ui action input fluid">
           <input id="search" type="text" placeholder="Enter a word or phrase ...">
           <button class="ui teal right labeled icon button">
@@ -10,6 +10,7 @@
           </button>
         </div>
       </form>
+      <ul id="search-results" class="results list-unstyled"></ul>
     </div>
   </div>
 </section>
@@ -17,28 +18,10 @@
   <div class="container">
     <div class="col-md-8">
       <ul id="youtube-results" class="results list-unstyled"></ul>
-      <ul id="reddit-results" class="ui divided items results list-unstyled"></ul>
+      <ul id="reddit-results" class="ui divided items results list-unstyled">Most recent searches: </ul>
     </div>
       <aside class="col-md-4">
         <ul id="twitter-results" class="results list-unstyled"></ul>
       </aside>
   </div>
 </section>
-
-<!-- YouTube modal -->
-<div class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    YouTube
-  </div>
-  <div class="content">
-    <div class="description">
-      <div class="ui header">Video Title</div>
-    </div>
-  </div>
-    <script>
-      $('.yt-video').on('click', function(evt) {
-        evt.preventDefault();
-        $('.ui.modal').modal('show');
-      });
-    </script>

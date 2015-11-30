@@ -15,7 +15,7 @@ userRoutes.route('/user/:_id')
 
 userRoutes.route('/login')
     .get(function(req, res){
-        res.render('login', {message: req.flash('loginMessage')})
+        res.render('login', {user: req.user, message: req.flash('loginMessage')})
     })
     .post(passport.authenticate('local-login', {
         //if successful, where do we want them to go?
@@ -27,7 +27,7 @@ userRoutes.route('/login')
 
 userRoutes.route('/signup')
     .get(function(req,res){
-        res.render('signup', {message: req.flash('signupMessage')})
+        res.render('signup', {user: req.user, message: req.flash('signupMessage')})
     })
     .post(passport.authenticate('local-signup', {
         //if successful signup, where do they go?
