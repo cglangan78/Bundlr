@@ -1,10 +1,13 @@
 {
   "name": "bundlr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Project 3",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "4.1.1"
   },
   "repository": {
     "type": "git",
@@ -17,9 +20,22 @@
   },
   "homepage": "https://github.com/cglangan78/Bundlr#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.0",
+    "cors": "^2.7.1",
+    "dotenv": "^1.2.0",
+    "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "express-ejs-layouts": "^2.0.0",
+    "express-session": "^1.12.1",
     "mongoose": "^4.2.7",
-    "morgan": "^1.6.1"
+    "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "request": "^2.67.0",
+    "twit": "^2.1.1"
   }
 }

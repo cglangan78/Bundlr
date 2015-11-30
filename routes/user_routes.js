@@ -1,33 +1,69 @@
 var
   usersController = require('../controllers/users_controller.js'),
   express = require('express'),
-  request = require('request'),
-  userRoutes = express.Router();
+  userRoutes = express.Router(),
+  passport = require('passport');
 
-userRoutes.route('/')
+userRoutes.route('/user')
   .get(usersController.showUser)
-  .post(usersController.createUser)
+  // .post(usersController.createUser)
 
-userRoutes.route('/:_id')
+userRoutes.route('/user/:_id')
   .delete(usersController.destroyUser)
   .put(usersController.updateUser)
 
 
-userRoutes.get('/popular', function(req,res){
-  // var q = $('#query').val('cat');
-  var key = 'AIzaSyCb8JsJ1jSYDDz9PihwYVgTJyiTTYaNpAw'
-  var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q=obama&key=" + key;
+userRoutes.route('/login')
+    .get(function(req, res){
+        res.render('login', {user: req.user, message: req.flash('loginMessage')})
+    })
+    .post(passport.authenticate('local-login', {
+        //if successful, where do we want them to go?
+        successRedirect: '/profile',
+        //if they fail, where do we want them to go?
+        failureRedirect: '/login',
+        failureFlash: true
+    }))
 
-  request(requestUrl, function(error, response, body) {
-    var bodyArr = JSON.parse(body).items;
-    for (var i = 0; i < bodyArr.length; i +=1) {
-      var videoId = bodyArr[i].id.videoId;
-      var url = 'https://www.youtube.com/watch?v=' + videoId
-        console.log(url)
-        res.json(url)
-    }
-  })
+userRoutes.route('/signup')
+    .get(function(req,res){
+        res.render('signup', {user: req.user, message: req.flash('signupMessage')})
+    })
+    .post(passport.authenticate('local-signup', {
+        //if successful signup, where do they go?
+        successRedirect: '/profile',
+        //if they fail, where do they go?
+        failureRedirect: '/signup',
+        failureFlash: true
+    }))
+
+userRoutes.get('/profile', isLoggedIn, function(req,res){
+        res.render('profile', {user: req.user})
 })
+// userRoutes.route('/profile')
+// .get(function(req,res){
+//   res.render('profile', {message: req.flash('signupMessage')})
+// })
+
+//facebook routes
+userRoutes.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}))
+
+userRoutes.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  successRedirect: '/profile',
+  failureRedirect: '/'
+}))
+
+
+userRoutes.get('/logout', function(req,res){
+        req.logout()
+        //once logged out, redirect back to the home page
+        res.redirect('/')
+})
+
+function isLoggedIn(req,res,next){
+  if(req.isAuthenticated()) return next()
+  res.redirect('/')
+}
 
 
 module.exports = userRoutes

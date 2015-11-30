@@ -1,0 +1,33 @@
+<section class="login row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="page-header">
+      <h1 class="ui header">Login</h1>
+    </div>
+
+      <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+      <form action="/login" method="post" class="ui form">
+          <div class="field">
+              <label>Email</label>
+              <input type="text" class="form-control" name="email">
+          </div>
+          <div class="field">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password">
+          </div>
+
+          <button type="submit" class="ui teal button">Login</button>
+      </form>
+
+      <hr>
+
+      <a href="/auth/facebook"><button class="ui facebook button"><i class="facebook icon"></i>Log in with Facebook</button></a>
+
+      <a href="/signup">
+        <button class="ui teal button">Sign Up</button>
+      </a>
+    </div>
+</section>

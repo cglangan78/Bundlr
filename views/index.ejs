@@ -1,0 +1,27 @@
+<section id="hero">
+  <div class="jumbotron">
+    <div class="container">
+      <h2>Search your favorite feeds in one convenient place.</h2>
+      <form class="form center-block" id="search-form" method="get">
+        <div class="ui action input fluid">
+          <input id="search" type="text" placeholder="Enter a word or phrase ...">
+          <button class="ui teal right labeled icon button">
+            <i class="search icon"></i> Search
+          </button>
+        </div>
+      </form>
+      <ul id="search-results" class="results list-unstyled"></ul>
+    </div>
+  </div>
+</section>
+<section id="results" class="row">
+  <div class="container">
+    <div class="col-md-8">
+      <ul id="youtube-results" class="results list-unstyled"></ul>
+      <ul id="reddit-results" class="ui divided items results list-unstyled">Most recent searches: </ul>
+    </div>
+      <aside class="col-md-4">
+        <ul id="twitter-results" class="results list-unstyled"></ul>
+      </aside>
+  </div>
+</section>
