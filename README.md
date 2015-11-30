@@ -2,6 +2,7 @@
 
 Bundlr aggregates three social media sites (Reddit, Twitter and YouTube) onto one page and displays the ten most relevant search results for each site.
 
+#####[Deployed on Heroku] (https://bundlr-rgk.herokuapp.com)
 
 ##Team:
 
@@ -30,11 +31,11 @@ Bundlr aggregates three social media sites (Reddit, Twitter and YouTube) onto on
 ####Registered User can:
 * customize their homepage by adding additional social media sites and deleting the pre-selected social media sites
 * see previous searchers
-* be able to favorite posts and see thier favorites on their profile page
+* be able to favorite posts and see their favorites on their profile page
 
 
 ##Technologies/APIs used:
-* Languages: JavaScript, Jquery, HTML, CSS, Bootstrap
+* Languages: JavaScript, jQuery, HTML, CSS, Bootstrap, Semantic UI
 * APIs: Reddit, Twitter, YouTube
 * Authentication using OAuth
 * AJAX
