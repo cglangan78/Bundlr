@@ -62,5 +62,10 @@ $(document).ready(function(){
          });
        }
       })
+    //search specific
+    $.ajax({
+      url: '/api'
+      ,method: 'GET'
+      ,success: function(data){
     })
   })
