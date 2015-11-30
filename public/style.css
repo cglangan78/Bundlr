@@ -1,5 +1,6 @@
 html, body {
   overflow-y: scroll;
+  background-color: #000501;
 }
 
 .brand {
@@ -11,12 +12,121 @@ html, body {
   margin-bottom: 0;
 }
 
-#youtube-results {
-
+#hero {
+  text-align: center;
 }
 
+#hero h2 {
+  font-family: 'Patua One';
+  font-size: 2.5rem;
+  color: #00b5ad;
+  text-shadow: 0 1px 1px #222;
+  letter-spacing: 1px;
+}
+
+#hero form {
+  width: 600px;
+}
+
+div.jumbotron {
+  margin-bottom: 0;
+  background: url('./images/office-desk.jpg');
+  background-size: cover;
+  min-height: 450px;
+  padding: 140px 0 60px 0;
+}
+
+.login, .signup, .profile {
+  padding-bottom: 50px;
+}
+
+.login {
+  background-color: #fff;
+}
+
+.signup {
+  background-color: #fff;
+}
+
+.profile {
+  background-color: #fff;
+}
+
+#search-results {
+  display: none;
+  padding: 20px 0 0 0;
+}
+
+#results {
+  background-color: #fff;
+  display: none;
+  padding: 40px 0;
+}
+
+.results {
+  margin-bottom: 70px;
+}
 #youtube-results img {
-  width: 175px;
+  width: 300px;
   height: auto;
-  padding: 1rem;
+}
+
+/* twitter feed user photo */
+.ui.feed>.event>.label {
+  width: 5em;
+}
+
+.ui.items>.item>.content>.header:not(.ui) {
+  font-size: 1.1em;
+}
+
+.ui.divided.items .item:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.ui.divided.items .item:last-of-type {
+  border-bottom: none;
+}
+
+.ui.divided.items>.item {
+  border-bottom: 1px solid rgba(255,69,0,0.35);
+}
+
+/* brand colors */
+.reddit {
+  color: #ff4500;
+}
+/* override Semantic UI blue segment to match Twitter brand color */
+.ui.blue.segment:not(.inverted) {
+  border-top: 1px solid rgba(34,36,38,.15);
+  border-bottom: 2px solid #55acee;
+}
+
+.twitter {
+  color: #55acee;
+}
+
+li.inline-block.ui.feed.raised.red.segment {
+  margin-right: 15px;
+}
+
+/* override Semantic UI blue segment to match YouTube brand color */
+.ui.red.segment:not(.inverted) {
+  border-top: 1px solid rgba(34,36,38,.15);
+  border-bottom: 2px solid #cd201f;
+}
+
+.youtube {
+  color: #cd201f;
+}
+
+footer {
+  padding: 50px 0;
+  min-height: 200px;
+}
+
+/* helper class */
+.inline-block {
+  display: inline-table;
 }
